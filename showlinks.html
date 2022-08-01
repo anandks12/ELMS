@@ -3,7 +3,7 @@
 <p align="center">
 <ul class="nav nav-tabs nav-fill" style="background-color:rgb(0, 75, 93);">
     <li class="nav-item">
-      <a class="nav-link" style="color:whitesmoke;" href="{{url_for('index')}}">Home</a>
+      <a class="nav-link" style="color:whitesmoke;" href="{{url_for('mhome')}}">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" style="color:whitesmoke;" href="{{url_for('login')}}">Login</a>
@@ -23,8 +23,22 @@
     <a class="nav-link" style="color:whitesmoke;" href="{{url_for('dashboard')}}">Dashboard</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link"   style="color:whitesmoke;" href="{{url_for('index')}}">Logout</a>
+    <a class="nav-link"   style="color:whitesmoke;" href="{{url_for('mhome')}}">Logout</a>
   </li>
+</ul>
+</li>
+</p>  
+{% endmacro %}
+
+{% macro  elinks()  %}
+
+
+<p align="center">
+<ul class="nav nav-tabs nav-fill" style="background-color:rgb(0, 75, 93);">
+  <li class="nav-item">
+    <a class="nav-link" style="color:whitesmoke;" href="{{url_for('dashboard')}}">Dashboard</a>
+  </li>
+
 </ul>
 </li>
 </p>  

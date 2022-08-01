@@ -1,4 +1,4 @@
-{% from "showlinks.html" import show_links %}
+{% from "showlinks.html" import  elinks %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@
         </div>
 
         <div class="child child2">
-          {{ show_links() }}
+          {{ elinks() }}
       </div>
 
         <div class="child child3">
@@ -29,9 +29,9 @@
         <div class="child child5 container" style="color:rgb(0, 75, 93);">
           <h3>Login Form {% if loginerror %} {{ loginerror }} {% endif %}</h3>
           <hr>
-          <form class="p-3" action="/login" method = "POST">
+          <form class="p-3" action="/elogin" method = "POST">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Manager ID</label>
+              <label for="exampleInputEmail1" class="form-label">Employee ID</label>
               <input type="text" name="name" class="form-control">
             </div>
             <div class="mb-3">

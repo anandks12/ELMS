@@ -23,11 +23,18 @@ def get_current_user():
         manager = user_cur.fetchone()
     return manager
 
-
-@app.route('/')
-def index():
+@app.route('/',methods=["POST", "GET"])
+def home():
+    if request.method == 'POST':
+        return render_template('elogin.html')
+    else:    
+        return render_template('index.html')
+@app.route('/mhome')
+def mhome():
     manager = get_current_user()
-    return render_template('home.html', manager = manager)
+    return render_template('mhome.html', manager = manager)
+
+   
 
 @app.route('/login', methods = ["POST", "GET"])
 def login():
@@ -63,7 +70,7 @@ def register():
             return render_template('register.html', registererror = 'Username already taken , try different username.')
         db.execute('insert into users ( name, password) values (?, ?)',[name, hashed_password])
         db.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('mhome'))
     return render_template('register.html', manager = manager)
 
 @app.route('/dashboard')
@@ -132,7 +139,30 @@ def deleteemp(empid):
 @app.route('/logout')
 def logout():
     session.pop('manager', None)
-    render_template('home.html')
+    render_template('mhome.html')
+@app.route('/elogin', methods = ["POST", "GET"])    
+def elogin():
 
+   # emp = get_current_user()
+    #error = None
+    #db = get_database()
+   # if request.method == 'POST':
+    #    name = request.form['name']
+     # password = request.form['password']
+      #  emp_cursor = db.execute('select * from users where name = ?', [name])
+       # emp = emp_cursor.fetchone()
+        #if emp:
+         #   if check_password_hash(emp['password'], password):
+          #      session['manager'] = emp['name']
+            #    return redirect(url_for('dashboard'))
+           # else:
+           #     error = "Username or Password did not match, Try again."
+        #else:
+         #   error = 'Username or password did not match, Try again.'
+    if request.method=='POST':
+        return render_template('elogin.html')#, loginerror = error, emp = emp)
+    else:
+        return render_template('elogin.html')    
+ 
 if __name__ == '__main__':
     app.run(debug = True)
